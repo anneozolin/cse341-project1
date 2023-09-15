@@ -1,0 +1,1 @@
+GET https://cse341-contacts-frontend.netlify.app/
