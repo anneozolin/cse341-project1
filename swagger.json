@@ -40,7 +40,7 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -112,37 +112,35 @@
             "required": true,
             "type": "string",
             "description": "ID of the user to update"
-          }
-        ],
-        "requestBody": {
-          "description": "User object to update",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  },
-                  "favoriteColor": {
-                    "type": "string"
-                  },
-                  "birthday": {
-                    "type": "string",
-                    "format": "date"
-                  }
+          },
+          {
+            "in": "body",
+            "name": "user",
+            "description": "User object to update",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "favoriteColor": {
+                  "type": "string"
+                },
+                "birthday": {
+                  "type": "string",
+                  "format": "date"
                 }
               }
             }
           }
-        },
+        ],
         "responses": {
           "204": {
             "description": "User updated successfully"
@@ -150,8 +148,9 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
-      },
+        },
+        "consumes": ["application/json"]
+      },      
       "delete": {
         "tags": ["Users"],
         "description": "",
