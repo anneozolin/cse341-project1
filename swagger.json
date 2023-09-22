@@ -80,7 +80,7 @@
     },
     "/users/{id}": {
       "get": {
-        "tags": [],
+        "tags": ["Users"],
         "description": "",
         "produces": [
           "application/json"
@@ -103,40 +103,49 @@
         }
       },
       "put": {
-        "tags": [],
-        "description": "",
+        "tags": ["Users"],
+        "description": "Update a user",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "favoriteColor": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
+            "description": "ID of the user to update"
+          }
+        ],
+        "requestBody": {
+          "description": "User object to update",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "favoriteColor": {
+                    "type": "string"
+                  },
+                  "birthday": {
+                    "type": "string",
+                    "format": "date"
+                  }
                 }
               }
             }
-            
           }
-        ],
+        },
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "User updated successfully"
           },
           "500": {
             "description": "Internal Server Error"
@@ -144,7 +153,7 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
